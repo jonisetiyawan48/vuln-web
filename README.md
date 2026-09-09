@@ -37,6 +37,7 @@ Jika server belum memiliki Node.js, instal Node.js LTS terlebih dahulu.
 Pastikan MariaDB aktif:
 
 ```bash
+sudo apt install mariadb-server mariadb-client
 sudo systemctl enable --now mariadb
 sudo systemctl status mariadb
 ```
@@ -52,14 +53,14 @@ cd /var/www
 
 Extract source ke:
 
-```text
-/var/www/Katalog-Koperasi-Sumber-Makmur
+```bash
+git clone https://github.com/jonisetiyawan48/vuln-web.git
 ```
 
 Kemudian:
 
 ```bash
-cd /var/www/Katalog-Koperasi-Sumber-Makmur
+cd /var/www/vuln-web
 npm install
 ```
 
@@ -68,7 +69,7 @@ npm install
 Salin konfigurasi:
 
 ```bash
-cp .env.example .env
+cp env.example .env
 nano .env
 ```
 
@@ -146,7 +147,7 @@ Jika suatu saat tidak ingin seed otomatis saat build, hapus script `prebuild` da
 Setelah MariaDB dan `.env` siap:
 
 ```bash
-cd /var/www/Katalog-Koperasi-Sumber-Makmur
+cd /var/www/vuln-web
 npm run build
 ```
 
@@ -177,7 +178,7 @@ ecosystem.config.cjs
 Jalankan:
 
 ```bash
-cd /var/www/Katalog-Koperasi-Sumber-Makmur
+cd /var/www/vuln-web
 pm2 start ecosystem.config.cjs
 ```
 
@@ -196,13 +197,13 @@ pm2 logs koperasi-sumber-makmur
 Restart:
 
 ```bash
-pm2 restart koperasi-sumber-makmur
+pm2 restart all
 ```
 
 Stop:
 
 ```bash
-pm2 stop koperasi-sumber-makmur
+pm2 stop all
 ```
 
 ## 9. Agar PM2 otomatis hidup setelah server reboot
@@ -236,7 +237,7 @@ PM2 menjalankan Next.js pada:
 Cari IP server CentOS:
 
 ```bash
-ip addr
+ip a
 ```
 
 Misalnya IP server:
@@ -290,38 +291,22 @@ dan detail produk:
 /catalog/[id]
 ```
 
-### LAB_MODE=false
 
-Gunakan untuk mode yang lebih aman. Search menggunakan parameterized query dan output tidak dirender sebagai HTML mentah pada bagian yang dibuat aman.
 
-## 13. Penting: keamanan server lab
-
-Aplikasi ini **sengaja memiliki vulnerability** untuk pembelajaran. Jangan membuka port aplikasi ini ke internet publik.
-
-Sebaiknya:
-
-```text
-PC Siswa ── LAN ──> CentOS Server
-                       │
-                       └── MariaDB
-```
-
-Gunakan hanya pada jaringan lab yang dikendalikan.
-
-## 14. Update source aplikasi
+## 13. Update source code aplikasi
 
 Setelah source diperbarui:
 
 ```bash
-cd /var/www/Katalog-Koperasi-Sumber-Makmur
+cd /var/www/vuln-web
 npm install
 npm run build
-pm2 restart koperasi-sumber-makmur
+pm2 restart all
 ```
 
 Perhatikan bahwa `npm run build` akan menjalankan seed terlebih dahulu.
 
-## 15. Backup database
+## 14. Backup database
 
 Backup:
 
@@ -335,7 +320,7 @@ Restore:
 mysql -u koperasi -p koperasi < backup-koperasi.sql
 ```
 
-## 16. Troubleshooting
+## 15. Troubleshooting
 
 ### Next.js tidak dapat terhubung ke MariaDB
 
@@ -389,14 +374,14 @@ Pastikan Next.js listen pada `0.0.0.0:3000`, bukan hanya `127.0.0.1:3000`.
 pm2 logs koperasi-sumber-makmur
 ```
 
-## 17. Urutan instalasi singkat
+## 16. Urutan instalasi singkat
 
 Jika server sudah memiliki Node.js, npm, MariaDB, dan PM2, urutan paling singkat:
 
 ```bash
-cd /var/www/Katalog-Koperasi-Sumber-Makmur
+cd /var/www/vuln
 npm install
-cp .env.example .env
+cp env.example .env
 nano .env
 npm run build
 pm2 start ecosystem.config.cjs
