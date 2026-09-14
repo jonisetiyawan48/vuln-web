@@ -271,8 +271,18 @@ dan detail produk:
 ```
 
 ```text
-/catalog?q=' or 1=1; --
+/catalog?q=' OR 1=1 -- 
 ```
+
+```text
+/catalog?q=<script>alert('Reflected XSS Berhasil')</script>
+```
+
+
+```text
+/catalog?q=<script>alert('Stored XSS Berhasil')</script>
+```
+
 
 
 ## 13. Update source code aplikasi
