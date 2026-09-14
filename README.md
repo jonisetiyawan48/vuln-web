@@ -106,30 +106,15 @@ EXIT;
 
 ## 5. Seed database otomatis saat build
 
-**Ya. Pada versi ini database seed dijalankan otomatis ketika `npm run build` dijalankan.**
+**Ya. Pada versi ini database seed dijalankan otomatis ketika `mysql import` dijalankan.**
 
 Alurnya:
 
-```text
-npm run build
-     │
-     ├── prebuild
-     │      └── npm run db:seed
-     │             └── menjalankan db/seed.sql
-     │
-     └── next build
-```
 
 Script seed berada di:
 
 ```text
-scripts/seed.mjs
-```
-
-Jika ingin menjalankan seed secara manual:
-
-```bash
-npm run db:seed
+mysql -h 127.0.0.1 -P 3306 -u koperasi -p 'koperasi' < /home/vuln-web/db/seed.sql
 ```
 
 `db/seed.sql` dibuat idempotent untuk struktur dan data contoh sehingga dapat dijalankan kembali tanpa sengaja membuat data contoh berulang.
