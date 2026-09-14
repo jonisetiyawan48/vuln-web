@@ -259,10 +259,14 @@ Mode ini digunakan untuk praktikum. Beberapa bagian aplikasi sengaja dibuat rent
 
 Contoh lokasi praktikum:
 
+
+```text
+1. Sql Inection
+```
+
 ```text
 /catalog?q=....
 ```
-
 
 dan detail produk:
 
@@ -274,13 +278,22 @@ dan detail produk:
 /catalog?q=' OR 1=1 OR p.name LIKE '
 ```
 
+
 ```text
-/catalog?q=<script>alert('Reflected XSS Berhasil')</script>
+2. XSS Scripting
 ```
 
+```text
+/admin/products/1/edit
+angka 1 merupakan ID produknya
+
+memasukan <script>alert('Reflected XSS Berhasil')</script> ke dalam field Deskripsi
+```
 
 ```text
-/catalog?q=<script>alert('Stored XSS Berhasil')</script>
+Pengujian XSS bisa di cek dihalaman /catalog/1
+angka 1 merupakan ID produk yang kita edit tadi
+
 ```
 
 
