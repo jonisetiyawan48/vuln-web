@@ -108,14 +108,7 @@ EXIT;
 
 **Ya. Pada versi ini database seed dijalankan otomatis ketika `mysql import` dijalankan.**
 
-Alurnya:
-
-
-Script seed berada di:
-
-```text
-mysql -h 127.0.0.1 -P 3306 -u koperasi -p 'koperasi' < /home/vuln-web/db/seed.sql
-```
+Alurnya: waktu npm run build otomatis terimport
 
 `db/seed.sql` dibuat idempotent untuk struktur dan data contoh sehingga dapat dijalankan kembali tanpa sengaja membuat data contoh berulang.
 
