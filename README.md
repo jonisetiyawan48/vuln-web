@@ -260,8 +260,9 @@ Mode ini digunakan untuk praktikum. Beberapa bagian aplikasi sengaja dibuat rent
 Contoh lokasi praktikum:
 
 ```text
-/catalog?q=...
+/catalog?q=....
 ```
+
 
 dan detail produk:
 
@@ -269,6 +270,9 @@ dan detail produk:
 /catalog/[id]
 ```
 
+```text
+/catalog?q=' or 1=1; --
+```
 
 
 ## 13. Update source code aplikasi
