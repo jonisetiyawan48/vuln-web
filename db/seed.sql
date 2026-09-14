@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS koperasi CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS `koperasi` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE koperasi;
 
 CREATE TABLE IF NOT EXISTS users (
