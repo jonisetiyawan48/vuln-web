@@ -271,7 +271,7 @@ dan detail produk:
 ```
 
 ```text
-/catalog?q=' OR 1=1 -- 
+/catalog?q=' OR 1=1 OR p.name LIKE '
 ```
 
 ```text
