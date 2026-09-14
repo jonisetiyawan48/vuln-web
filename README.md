@@ -26,6 +26,17 @@ Target deployment: **server Linux CentOS lokal/LAN**. Tidak membutuhkan Nginx, d
 Gunakan Node.js LTS yang sesuai dengan kebijakan server. Pastikan:
 
 ```bash
+# 1. Download & jalankan setup script NodeSource untuk Node 22
+curl -fsSL https://rpm.nodesource.com/setup_22.x | sudo bash -
+
+# 2. Install Node.js
+sudo dnf install -y nodejs
+
+# 3. Verifikasi versi
+node -v
+npm -v
+
+
 node -v
 npm -v
 ```
